@@ -1,0 +1,67 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://4cstuxihwmn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uocer"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+bg_color = Color(0.354269, 0.731172, 0.561893, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.563839, 0.887862, 0.886731, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p38ku"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+bg_color = Color(0.219879, 0.314173, 0.724376, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.563839, 0.887862, 0.886731, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5joln"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.563839, 0.887862, 0.886731, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ku8ja"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+bg_color = Color(0.354269, 0.731172, 0.561893, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.563839, 0.887862, 0.886731, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ntwl"]
+bg_color = Color(0.522108, 0.339611, 0.241668, 1)
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.94902, 0.94902, 0.309804, 1)
+Button/font_sizes/font_size = 20
+Button/fonts/font = null
+Button/styles/focus = SubResource("StyleBoxFlat_uocer")
+Button/styles/hover = SubResource("StyleBoxFlat_p38ku")
+Button/styles/normal = SubResource("StyleBoxFlat_5joln")
+Button/styles/pressed = SubResource("StyleBoxFlat_ku8ja")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_1ntwl")

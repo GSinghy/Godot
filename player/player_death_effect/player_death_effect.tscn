@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=3 uid="uid://btnmjwwisaoln"]
+
+[ext_resource type="Script" path="res://player/player_death_effect/player_death_effect.gd" id="1_qdaub"]
+[ext_resource type="Texture2D" uid="uid://b48ghtiyla8jg" path="res://player/tighit.png" id="2_omrif"]
+[ext_resource type="Texture2D" uid="uid://c68q48wry7ixn" path="res://player/sparkl3.png" id="3_mnp68"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3arx"]
+atlas = ExtResource("2_omrif")
+region = Rect2(0, 0, 669, 705)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5jsff"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3arx")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"deatheffect",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_defge"]
+offsets = PackedFloat32Array(0.5, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.435294, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e1m5l"]
+gradient = SubResource("Gradient_defge")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vytjp"]
+lifetime_randomness = 0.08
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -225, 0)
+emission_shape_scale = Vector3(-50, 45, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+inherit_velocity_ratio = 30.0
+direction = Vector3(0, 0, 0)
+spread = 135.0
+initial_velocity_max = 787.88
+angular_velocity_min = -116.36
+angular_velocity_max = 269.09
+orbit_velocity_min = -0.384
+orbit_velocity_max = 0.687
+radial_velocity_min = -191.92
+radial_velocity_max = 131.31
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -8.08
+linear_accel_max = -2.23517e-06
+radial_accel_min = -4.04
+radial_accel_max = 4.04
+damping_max = 4.041
+scale_min = 0.0
+scale_max = 0.75
+color_ramp = SubResource("GradientTexture1D_e1m5l")
+
+[node name="PlayerDeathEffect" type="Node2D"]
+script = ExtResource("1_qdaub")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -151)
+scale = Vector2(0.57, 0.57)
+sprite_frames = SubResource("SpriteFrames_5jsff")
+animation = &"deatheffect"
+frame_progress = 0.0400829
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_vytjp")
+texture = ExtResource("3_mnp68")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,103 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnqfm7q80dkic"]
+
+[ext_resource type="Script" path="res://Menu/options_menu.gd" id="1_feg1e"]
+[ext_resource type="Texture2D" uid="uid://dlfb8ftj11jr1" path="res://Menu/Menuscrn.png" id="2_g4h1p"]
+[ext_resource type="Theme" uid="uid://4cstuxihwmn" path="res://Menu/Theme/game_theme.tres" id="3_caoje"]
+
+[node name="OptionsMenuScreen" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_feg1e")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_g4h1p")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.502
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -587.0
+offset_right = 113.392
+offset_bottom = -496.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 56
+text = "OPTIONS"
+
+[node name="TextEdit2" type="TextEdit" parent="."]
+anchors_preset = -1
+anchor_left = 0.621
+anchor_top = 0.5
+anchor_right = 0.925
+anchor_bottom = 0.5
+offset_left = 0.21582
+offset_top = -462.0
+offset_right = 105.8
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/background_color = Color(0.0180752, 0.0335017, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "CONTROLS
+
+Run                          \"Right & \"Left\" keys
+Jump                        SPACEBAR
+Shoot                       \"S\" key
+Crouch                     \"Down\" key
+Shoot up                  \"S\" key & \"up\" keys
+Crouch shoot          \"Down\" & \"S\" keys
+Pause Game            ENTER"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_caoje")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Window" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Window"
+
+[node name="Resolution" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Resolution"
+
+[node name="Back" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Go Back"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Window" to="." method="_on_window_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Resolution" to="." method="_on_resolution_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

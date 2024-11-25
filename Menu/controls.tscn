@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0kn17gd2hdd2"]
+
+[ext_resource type="Script" path="res://Menu/controls.gd" id="1_vfykx"]
+[ext_resource type="Texture2D" uid="uid://dlfb8ftj11jr1" path="res://Menu/Menuscrn.png" id="2_svblb"]
+[ext_resource type="Theme" uid="uid://4cstuxihwmn" path="res://Menu/Theme/game_theme.tres" id="3_ytns3"]
+
+[node name="ControlScreen" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_vfykx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_svblb")
+
+[node name="TextEdit2" type="TextEdit" parent="."]
+anchors_preset = -1
+anchor_left = 0.621
+anchor_top = 0.5
+anchor_right = 0.925
+anchor_bottom = 0.5
+offset_left = -119.784
+offset_top = -462.0
+offset_right = 12.8
+offset_bottom = 94.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/background_color = Color(0.0180752, 0.0335017, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "CONTROLS
+
+Run                          \"Right & \"Left\" keys
+Jump                        SPACEBAR
+Shoot                       \"S\" key
+Crouch                     \"Down\" key
+Shoot up                  \"S\" key & \"up\" keys
+Crouch shoot          \"Down\" & \"S\" keys
+Pause Game            ENTER"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_ytns3")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Back" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Go Back"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
