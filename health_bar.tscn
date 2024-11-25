@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp0d4oj2vu8ur"]
+
+[ext_resource type="Script" path="res://health.gd" id="1_6aysi"]
+[ext_resource type="Texture2D" uid="uid://cu30hrwf6usan" path="res://player/health.png" id="1_j42h2"]
+
+[node name="HealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_6aysi")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_j42h2")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_j42h2")
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_j42h2")
