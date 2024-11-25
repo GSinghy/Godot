@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://delsmxxj4otcv"]
+
+[ext_resource type="Script" path="res://Collectibles/coin/coin.gd" id="1_ee17i"]
+[ext_resource type="Texture2D" uid="uid://c6a0icxgom00h" path="res://Collectibles/coin/coin-1.png" id="1_tgy7o"]
+[ext_resource type="Texture2D" uid="uid://du6he708eyeid" path="res://Collectibles/coin/coin-2.png" id="2_ny1qx"]
+[ext_resource type="Texture2D" uid="uid://c6sc0nc6arxc8" path="res://Collectibles/coin/coin-3.png" id="3_ipemi"]
+[ext_resource type="Texture2D" uid="uid://dpty5x2wp5ek0" path="res://Collectibles/coin/coin-4.png" id="4_k2oln"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owk8w"]
+atlas = ExtResource("1_tgy7o")
+region = Rect2(0, 0, 5, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25v3f"]
+atlas = ExtResource("2_ny1qx")
+region = Rect2(0, 0, 5, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a3kv"]
+atlas = ExtResource("3_ipemi")
+region = Rect2(0, 0, 5, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00hpu"]
+atlas = ExtResource("4_k2oln")
+region = Rect2(0, 0, 5, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_44fb5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owk8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25v3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8a3kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00hpu")
+}],
+"loop": true,
+"name": &"coin",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_chy2d"]
+radius = 20.5749
+
+[node name="Coin" type="Node2D"]
+script = ExtResource("1_ee17i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(6.43111, 4.47804)
+sprite_frames = SubResource("SpriteFrames_44fb5")
+animation = &"coin"
+autoplay = "coin"
+frame_progress = 0.804728
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1, 0.759999)
+shape = SubResource("CircleShape2D_chy2d")
+debug_color = Color(0.867654, 0.315619, 0.42164, 0.42)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 20.0
+offset_bottom = 11.0
+text = "1"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://be4nf8once7l5"]
+
+[ext_resource type="Texture2D" uid="uid://cgk7hh0vc7mv8" path="res://backround/beachy3.png" id="1_oiwh6"]
+
+[node name="Ocean" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(2244, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(0, -470)
+texture = ExtResource("1_oiwh6")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(1122, -470)
+texture = ExtResource("1_oiwh6")
+centered = false

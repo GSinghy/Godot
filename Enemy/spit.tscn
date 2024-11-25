@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcdeawnc7pqfv"]
+
+[ext_resource type="Texture2D" uid="uid://b65beus0xjqg1" path="res://Enemy/Snake/spits.png" id="1_osbbw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1gup"]
+atlas = ExtResource("1_osbbw")
+region = Rect2(0, 0, 772, 294)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yia4m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1gup")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_vrcjb"]
+script/source = "extends AnimatedSprite2D
+
+var bullet_impact_effect = preload(\"res://player/bullet_impact_effect.tscn\")
+
+@export var speed: int = 600
+var direction: int = 1  # Default to move right
+var damage_amount: int = 1
+var move_x_direction: bool = true  # Ensure bullets move along x-axis by default
+
+func _ready():
+	# Set bullet scale based on direction
+	scale.x = -1 if direction == -1 else 1
+
+func _physics_process(delta: float) -> void:
+	# Move horizontally only
+	position.x += direction * speed * delta
+
+func _on_timer_timeout() -> void:
+	queue_free()  # Remove the bullet when timer expires
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	print(\"Bullet area entered\")
+	bullet_impact()
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	print(\"Bullet body entered\")
+	bullet_impact()
+
+func get_damage_amount() -> int:
+	return damage_amount
+
+func bullet_impact() -> void:
+	# Instantiate and add the impact effect to the scene
+	var bullet_impact_effect_instance = bullet_impact_effect.instantiate() as Node2D
+	bullet_impact_effect_instance.global_position = global_position
+	get_parent().add_child(bullet_impact_effect_instance)
+	queue_free()  # Remove the bullet after creating the impact effect
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7d58"]
+size = Vector2(626.468, 73.4492)
+
+[node name="Spit" type="AnimatedSprite2D"]
+position = Vector2(0, -0.719)
+scale = Vector2(0.00871514, 0.00871514)
+sprite_frames = SubResource("SpriteFrames_yia4m")
+script = SubResource("GDScript_vrcjb")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-22.994, -2.518)
+shape = SubResource("RectangleShape2D_d7d58")
